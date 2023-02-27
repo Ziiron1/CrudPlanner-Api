@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "https://apicrudplanner.onrender.com",
+    origin: "https://virtualplanner.netlify.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // permite enviar cookies
   })
