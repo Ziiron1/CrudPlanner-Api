@@ -80,7 +80,7 @@ function MyCalendar() {
     Cookies.set("id_user", userId);
     if (userId) {
       axios
-        .get(`http://localhost:4000/planner/user/${userId}`)
+        .get(`https://apicrudplanner.onrender.com/planner/user/${userId}`)
         .then((response) => {
           setEvents(response.data.planners);
         })
@@ -109,7 +109,7 @@ function MyCalendar() {
     };
 
     axios
-      .patch(`http://localhost:4000/planner/${selectedEvent.id}`, updatedEvent)
+      .patch(`https://apicrudplanner.onrender.com/planner/${selectedEvent.id}`, updatedEvent)
       .then((response) => {
         const updatedEvents = events.map((event) => {
           if (event.id === selectedEvent.id) {
@@ -140,7 +140,7 @@ function MyCalendar() {
       const userId = Cookies.get("id_user");
       if (userId) {
         axios
-          .post("http://localhost:4000/planner", {
+          .post("https://apicrudplanner.onrender.com/planner", {
             user_Id: userId,
             conteudo: "Conteudo",
             start: slotInfo.start,
@@ -157,7 +157,7 @@ function MyCalendar() {
 
   function handleDeleteEvent() {
     axios
-      .delete(`http://localhost:4000/planner/${selectedEvent._id}`)
+      .delete(`https://apicrudplanner.onrender.com/planner/${selectedEvent._id}`)
       .then(() => {
         const updatedEvents = events.filter(
           (event) => event.id !== selectedEvent.id
@@ -176,7 +176,7 @@ function MyCalendar() {
     const userId = Cookies.get("id_user");
     if (userId) {
       axios
-        .post("http://localhost:4000/planner", {
+        .post("https://apicrudplanner.onrender.com/planner", {
           userID: userId,
           conteudo: "Conteudo",
           start: start,
@@ -199,7 +199,7 @@ function MyCalendar() {
     setEvents(updatedEvents);
 
     axios
-      .patch(`http://localhost:4000/planner/${updatedEvent.id}`, updatedEvent)
+      .patch(`https://apicrudplanner.onrender.com/planner/${updatedEvent.id}`, updatedEvent)
       .then((response) => {
         //...
       })
@@ -210,7 +210,7 @@ function MyCalendar() {
     const updatedEvent = { ...event, start, end };
 
     axios
-      .patch(`http://localhost:4000/planner/${updatedEvent.id}`, updatedEvent)
+      .patch(`https://apicrudplanner.onrender.com/planner/${updatedEvent.id}`, updatedEvent)
       .then((response) => {
         const updatedEvents = events.map((e) =>
           e.id === updatedEvent.id ? updatedEvent : e
